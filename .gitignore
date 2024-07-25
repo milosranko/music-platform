@@ -1,0 +1,8 @@
+[Bb]in
+[Oo]bj
+*.log
+log.txt
+*.user
+.vs/
+node_modules/
+/package-lock.json
