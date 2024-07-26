@@ -1,0 +1,11 @@
+<h2>List of users tracks</h2>
+
+<mat-list>
+    @for (track of tracksStore.tracks(); track track.id) {
+        <mat-list-item>
+          <mat-icon matListItemIcon>play_circle_outline</mat-icon>
+          <div matListItemTitle>{{track.title}} - {{track.artist}}</div>
+          <div matListItemLine>{{track.year}}, {{track.genre}}</div>
+        </mat-list-item>
+      }
+</mat-list>

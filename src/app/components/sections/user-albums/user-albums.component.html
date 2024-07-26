@@ -1,0 +1,21 @@
+<h2>List of user albums</h2>
+
+<div class="list">
+    @for (album of userAlbumsStore.albums(); track album.id) {
+        <mat-card class="example-card" appearance="outlined">
+            <mat-card-header>
+              <mat-card-title>{{album.title}} - {{album.artist}}</mat-card-title>
+              <mat-card-subtitle>{{album.genre}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="{{album.cover}}" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <p>
+                {{album.promoText}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button>Edit</button>
+            </mat-card-actions>
+          </mat-card>  
+    }
+</div>
