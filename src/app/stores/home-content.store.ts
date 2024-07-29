@@ -29,6 +29,39 @@ const initialState: HomeTracksState = {
       cover:
         'https://upload.wikimedia.org/wikipedia/en/2/21/%3F_XXXTENTACION_Cover.png',
     },
+    {
+      id: 3,
+      title: 'Some Other Track',
+      artist: ['Somebody Else'],
+      album: ['Some Other Album'],
+      year: 1998,
+      genre: ['Rap', 'Trap'],
+      duration: 300,
+      cover:
+        'https://upload.wikimedia.org/wikipedia/ru/7/7e/Revenge_Single_Cover.jpg',
+    },
+    {
+      id: 4,
+      title: 'Some Other Track',
+      artist: ['Somebody Else'],
+      album: ['Some Other Album'],
+      year: 1998,
+      genre: ['Rap', 'Trap'],
+      duration: 300,
+      cover:
+        'https://upload.wikimedia.org/wikipedia/en/f/f7/XXXTentacion_%E2%80%93_Skins.png',
+    },
+    {
+      id: 5,
+      title: 'Some Other Track',
+      artist: ['Somebody Else'],
+      album: ['Some Other Album'],
+      year: 1998,
+      genre: ['Rap', 'Trap'],
+      duration: 300,
+      cover:
+        'https://upload.wikimedia.org/wikipedia/en/5/56/Bad_vibes_forever_xxxtentacion.jpg',
+    },
   ],
 };
 
