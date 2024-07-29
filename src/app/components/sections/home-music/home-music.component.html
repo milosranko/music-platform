@@ -1,0 +1,13 @@
+<h4>Special tracks</h4>
+
+<div class="list">
+  @for (track of homeTracksStore.tracks(); track track.id) {
+  <mat-card class="example-card" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>{{ track.title }} - {{ track.artist }}</mat-card-title>
+      <mat-card-subtitle>{{ track.genre }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{ track.cover }}" alt="Photo of a Shiba Inu" />
+  </mat-card>
+  }
+</div>
