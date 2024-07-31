@@ -1,7 +1,7 @@
 import { Client, cacheExchange, fetchExchange } from '@urql/core';
 
 const client = new Client({
-    url: `https://cg.optimizely.com/content/v2?auth=${process.env?.OPTIMIZELY_SAAS_SINGLE_KEY}`,
+    url: `https://cg.optimizely.com/content/v2?auth=${process.env?.OPTIMIZELY_CG_SINGLEKEY}`,
     exchanges: [cacheExchange, fetchExchange],
   });
 
