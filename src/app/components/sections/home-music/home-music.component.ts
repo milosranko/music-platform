@@ -11,4 +11,8 @@ import { MatCardModule } from '@angular/material/card';
 })
 export class HomeMusicComponent {
   homeTracksStore = inject(HomeTracksStore);
+
+  ngOnInit(): void {
+    this.homeTracksStore.loadStartPage();
+  }
 }

@@ -1,3 +1,3 @@
 export function GET(request: Request) {
-    return new Response(`Hello from BE`);
+    return new Response(process.env?.OPTIMIZELY_SAAS_SINGLE_KEY);
   }

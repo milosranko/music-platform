@@ -1,11 +1,13 @@
-import { signalStore, withMethods, withState } from '@ngrx/signals';
+import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
 import { UserTrack } from '../interfaces/UserTrack';
 
 export interface HomeTracksState {
+  pageHeader: string;
   tracks: UserTrack[];
 }
 
 const initialState: HomeTracksState = {
+  pageHeader: '',
   tracks: [
     {
       id: 1,
@@ -70,5 +72,10 @@ export const HomeTracksStore = signalStore(
   withState(initialState),
   withMethods((store) => ({
     /** TODO: api calls */
+    async loadStartPage(): Promise<void> {
+      const homepageResponse = await fetch('/api/homepage');
+      const homepage = await homepageResponse.json();
+      patchState(store, { pageHeader: homepage.StartPage.items[0].Heading });
+    },
   }))
 );
