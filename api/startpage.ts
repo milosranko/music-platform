@@ -20,6 +20,5 @@ export async function GET(request: Request) {
     `;
     
     const result = await client.query(QUERY, {  });
-    console.log(result);
     return new Response(JSON.stringify(result.data), { headers: { 'content-type': 'application/json' } });
 }

@@ -1,5 +1,5 @@
 <header>
-  <h1>Music Platform</h1>
+  <h1>{{siteSettingsStore.heading()}}</h1>
 </header>
 <main>
   <aside>
@@ -16,5 +16,5 @@
   </section>
 </main>
 <footer>
-  <p>(c) FirstLine Software</p>
+  <p [innerHTML]="siteSettingsStore.footerHtmlSafe()"></p>
 </footer>
