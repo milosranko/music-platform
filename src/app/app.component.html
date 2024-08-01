@@ -1,5 +1,15 @@
 <header>
   <h1>{{siteSettingsStore.heading()}}</h1>
+  <nav class="top-nav">
+    <ul>
+      @if (userStore.isLoggedIn()) {
+        <li><button mat-raised-button (click)="logout()">Logout</button></li>
+      } @else {
+        <li><a mat-raised-button routerLink="/sign-in" routerLinkActive="active">Sign in</a></li>
+        <li><button mat-raised-button (click)="login()">Login</button></li>
+      }
+    </ul>
+  </nav>
 </header>
 <main>
   <aside>

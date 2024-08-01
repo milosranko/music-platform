@@ -1,0 +1,20 @@
+<h2>Create user form</h2>
+<div [formGroup]="form" class="form">
+    <mat-form-field>
+        <mat-label>Artist Name</mat-label>
+        <input matInput formControlName="artistName">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>User Name</mat-label>
+        <input matInput formControlName="userName">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password">
+    </mat-form-field>
+    <button mat-flat-button (click)="createUser()" [disabled]="!form.valid">Create User</button>
+</div>

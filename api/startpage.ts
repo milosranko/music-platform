@@ -7,16 +7,19 @@ const client = new Client({
 
 export async function GET(request: Request) {
     const QUERY = `
-        {
-            StartPage(locale: en) {
-                items {
-                    Heading
-                    FooterText {
-                        html
-                    }
+    {
+        StartPage(locale: en) {
+            items {
+                Heading
+                MainMenuContentArea {
+                    __typename
+                }
+                FooterText {
+                    html
                 }
             }
         }
+    }
     `;
     
     const result = await client.query(QUERY, {  });

@@ -13,6 +13,7 @@ header {
     background-color: #333;
     color: white;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -37,4 +38,18 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
+    ul {
+        display: flex;
+        gap: 10px;
+        list-style: none;
+        padding: 0;
+    }
 }
