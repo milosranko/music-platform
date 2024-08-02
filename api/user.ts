@@ -22,7 +22,7 @@ export async function POST(request: Request) {
     console.log(body);
     console.log('!!!!!!!!');
 
-    const accessToken: any = await getAccessToken(process.env?.OPTIMIZELY_CG_CLIENTID as string, process.env?.OPTIMIZELY_CG_SECRET as string);
+    const accessToken: any = await getAccessToken(process.env?.OPTIMIZELY_REST_CLIENTID as string, process.env?.OPTIMIZELY_REST_SECRET as string);
     console.log('accessToken', accessToken);
     const res = await fetch(restUrl, {
       method: 'POST',
