@@ -1,5 +1,6 @@
 import { inject } from '@angular/core';
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
+import { v4 as uuidv4 } from 'uuid';
 
 export interface UserState {
   isLoggedIn: boolean;
@@ -28,7 +29,7 @@ export const UserStore = signalStore(
       patchState(store, { isLoading: true });
       const createUserResponse = await fetch('/api/user', {
         method: 'POST',
-        body: JSON.stringify(params),
+        body: JSON.stringify({...params, key: uuidv4()}),
       });
       const userData = await createUserResponse.json();
       patchState(store, { 
