@@ -18,6 +18,9 @@
         <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
         <li><a routerLink="/albums" routerLinkActive="active">Albums</a></li>
         <li><a routerLink="/tracks" routerLinkActive="active">Tracks</a></li>
+        @if (userStore.isLoggedIn()) {
+          <li><a routerLink="/profile" routerLinkActive="active">Profile</a></li>
+        }
       </ul>
     </nav>
   </aside>
