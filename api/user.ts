@@ -10,6 +10,7 @@ export async function POST(request: Request) {
       "locale": "en",
       "container": "562f65defc854736a253401dfc13898d",
       "displayName": params.artistName,
+      "status": "Published",
       "properties": {
           "Name": params.artistName,
           "Description": "<p>some text</p>",
@@ -18,12 +19,12 @@ export async function POST(request: Request) {
           "Email": params.email,
       }
     };
-    console.log('!!!!!!!!');
-    console.log(body);
-    console.log('!!!!!!!!');
+    // console.log('!!!!!!!!');
+    // console.log(body);
+    // console.log('!!!!!!!!');
 
     const accessToken: any = await getAccessToken(process.env?.OPTIMIZELY_REST_CLIENTID as string, process.env?.OPTIMIZELY_REST_SECRET as string);
-    console.log('accessToken', accessToken);
+    // console.log('accessToken', accessToken);
     const res = await fetch(restUrl, {
       method: 'POST',
       headers: {

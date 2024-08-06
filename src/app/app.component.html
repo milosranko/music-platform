@@ -5,8 +5,8 @@
       @if (userStore.isLoggedIn()) {
         <li><button mat-raised-button (click)="logout()">Logout</button></li>
       } @else {
+        <li><a mat-raised-button routerLink="/login" routerLinkActive="active">Login</a></li>
         <li><a mat-raised-button routerLink="/sign-in" routerLinkActive="active">Sign in</a></li>
-        <li><button mat-raised-button (click)="login()">Login</button></li>
       }
     </ul>
   </nav>

@@ -21,10 +21,6 @@ export class AppComponent {
     this.siteSettingsStore.loadAll();
   }
 
-  login = () => {
-    this.userStore.login();
-  }
-
   logout = () => {
     this.userStore.logout();
   }
