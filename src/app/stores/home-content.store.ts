@@ -73,9 +73,9 @@ export const HomeTracksStore = signalStore(
   withMethods((store) => ({
     /** TODO: api calls */
     async loadStartPage(): Promise<void> {
-      const homepageResponse = await fetch('/api/homepage');
-      const homepage = await homepageResponse.json();
-      patchState(store, { pageHeader: homepage.StartPage.items[0].Heading });
+      // const homepageResponse = await fetch('/api/homepage');
+      // const homepage = await homepageResponse.json();
+      // patchState(store, { pageHeader: homepage.StartPage.items[0].Heading });
     },
   }))
 );

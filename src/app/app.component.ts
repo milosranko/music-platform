@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { SiteSettingsStore } from './stores/site-settings.store';
 import { MatButtonModule } from '@angular/material/button';
 import { UserStore } from './stores/user.store';
@@ -17,11 +17,16 @@ export class AppComponent {
   siteSettingsStore = inject(SiteSettingsStore);
   userStore = inject(UserStore);
 
+  constructor(private router: Router) {}
+
   ngOnInit(): void {
+    this.userStore.restoreUser();
     this.siteSettingsStore.loadAll();
   }
 
   logout = () => {
-    this.userStore.logout();
+    this.userStore.logout().then(() => {
+      this.router.navigate(['/']);
+    });
   }
 }

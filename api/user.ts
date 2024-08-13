@@ -1,9 +1,21 @@
-import { getAccessToken } from '../server-utils/auth';
+import { getAccessSaaSToken } from '../server-utils/auth';
+import { getDirectusUserInfo, loginDirectusUser, regiserDirectusUser } from '../server-utils/directus';
+
 const restUrl = 'https://app-flso01saas05ctsp001.cms.optimizely.com/_cms/preview2/content?skipValidation=true';
 
 export async function POST(request: Request) {
     /** The data from UI: */
     const params: any = await request.json();
+    
+    const createUserStatus = await regiserDirectusUser(params.email, params.password);
+    
+    if (createUserStatus !== 204) {
+      return new Response('', { headers: { 'content-type': 'application/json' }, status: 400 });
+    }
+
+    const {data: {access_token}} = await loginDirectusUser(params.email, params.password) as any;
+    const {data: userData}: any = await getDirectusUserInfo(access_token);
+
     const body = {
       "key": params.key.replace(/-/gi, ''),
       "contentType": "ArtistPage",
@@ -12,6 +24,7 @@ export async function POST(request: Request) {
       "displayName": params.artistName,
       "status": "Published",
       "properties": {
+          "UserId": userData.id,
           "Name": params.artistName,
           "Description": "<p>some text</p>",
           "UserName": params.userName,
@@ -19,17 +32,14 @@ export async function POST(request: Request) {
           "Email": params.email,
       }
     };
-    // console.log('!!!!!!!!');
-    // console.log(body);
-    // console.log('!!!!!!!!');
 
-    const accessToken: any = await getAccessToken(process.env?.OPTIMIZELY_REST_CLIENTID as string, process.env?.OPTIMIZELY_REST_SECRET as string);
-    // console.log('accessToken', accessToken);
+    const saasAccessToken: any = await getAccessSaaSToken(process.env?.OPTIMIZELY_REST_CLIENTID as string, process.env?.OPTIMIZELY_REST_SECRET as string);
+
     const res = await fetch(restUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${accessToken.access_token}`,
+        'Authorization': `Bearer ${saasAccessToken.access_token}`,
         accept: 'application/vnd.optimizely.cms.v1.includeSchema+json'
       },
       body: JSON.stringify(body),
@@ -37,6 +47,8 @@ export async function POST(request: Request) {
       console.log('ERROR during creating the user', err);
     });
 
-    const json = await res?.json();
-    return new Response(JSON.stringify(json), { headers: { 'content-type': 'application/json' } });
+    // const saasResponse.status = await res?.json();
+    return new Response(JSON.stringify({
+      userId: userData.id,
+    }), { headers: { 'content-type': 'application/json' }, status: 200 });
 }
