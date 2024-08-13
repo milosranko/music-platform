@@ -6,13 +6,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { UserStore } from '../../../stores/user.store';
 
 @Component({
-  selector: 'app-sign-in',
+  selector: 'app-sign-up',
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule, MatInputModule, MatFormFieldModule, MatButtonModule],
-  templateUrl: './sign-in.component.html',
-  styleUrl: './sign-in.component.scss'
+  templateUrl: './sign-up.component.html',
+  styleUrl: './sign-up.component.scss'
 })
-export class SignInComponent {
+export class SignUpComponent {
 
   userStore = inject(UserStore);
 
