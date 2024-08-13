@@ -1,5 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { HelloStore } from '../../../stores/hello.store';
+import { Component } from '@angular/core';
 import { HomeMusicComponent } from '../home-music/home-music.component';
 
 @Component({
@@ -9,10 +8,5 @@ import { HomeMusicComponent } from '../home-music/home-music.component';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent implements OnInit {
-  readonly store = inject(HelloStore);
-
-  ngOnInit(): void {
-    this.store.loadAll();
-  }
+export class HomeComponent {
 }
