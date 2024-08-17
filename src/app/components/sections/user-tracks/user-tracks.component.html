@@ -1,5 +1,10 @@
-<h2>List of users tracks</h2>
-
+<section>
+  <div class="example-label">Basic</div>
+  <div class="example-button-row">
+    <button mat-button (click)="openEditTrackForm()">Test Edit</button>
+    <button mat-button (click)="openCreateTrackForm()">Create</button>
+  </div>
+</section>
 <mat-list>
     @for (track of tracksStore.tracks(); track track.id) {
         <mat-list-item>

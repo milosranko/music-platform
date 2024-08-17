@@ -1,0 +1,80 @@
+<h2 mat-dialog-title>{{track ? 'Edit track' : 'Create new track'}}</h2>
+<mat-dialog-content>
+    <form [formGroup]="form">
+        <h5 class="array-fields-title">
+            General
+        </h5>
+        <div class="first-row-fields">
+            <mat-form-field>
+                <mat-label>Title</mat-label>
+                <input matInput placeholder="Title" formControlName="title">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Duration</mat-label>
+                <input matInput placeholder="Duration" formControlName="duration">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Year</mat-label>
+                <input matInput placeholder="Year" formControlName="year">
+            </mat-form-field>
+        </div>
+        <h5 class="array-fields-title">
+            Artists
+        </h5>
+        <div class="array-fields" formArrayName="artist">
+            @for (artist of artistArray.controls; track artist) {
+                <div class="array-fields__row">
+                    <mat-form-field>
+                        <input matInput placeholder="Artist" formControlName="{{$index}}">
+                    </mat-form-field>
+                    <button mat-fab aria-label="Remove" (click)="deleteArtist($index)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            }
+            <button mat-fab aria-label="Add" (click)="addArtist()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+        <h5 class="array-fields-title">
+            Albums
+        </h5>
+        <div class="array-fields" formArrayName="album">
+            @for (album of albumArray.controls; track album) {
+                <div class="array-fields__row">
+                    <mat-form-field>
+                        <input matInput placeholder="Album" formControlName="{{$index}}">
+                    </mat-form-field>
+                    <button mat-fab aria-label="Remove" (click)="deleteAlbum($index)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            }
+            <button mat-fab aria-label="Add" (click)="addAlbum()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+        <h5 class="array-fields-title">
+            Genres
+        </h5>
+        <div class="array-fields" formArrayName="genre">
+            @for (genre of genreArray.controls; track genre) {
+                <div class="array-fields__row">
+                    <mat-form-field>
+                        <input matInput placeholder="Genre" formControlName="{{$index}}">
+                    </mat-form-field>
+                    <button mat-fab aria-label="Remove" (click)="deleteGenre($index)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            }
+            <button mat-fab aria-label="Add" (click)="addGenre()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>No</button>
+  <button mat-button mat-dialog-close cdkFocusInitial (click)="onSubmit()" [disabled]="form.invalid">{{track ? 'Save' : 'Create'}}</button>
+</mat-dialog-actions>
