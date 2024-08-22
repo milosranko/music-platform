@@ -10,58 +10,53 @@ const initialState: HomeTracksState = {
   pageHeader: '',
   tracks: [
     {
-      id: 1,
+      id: '1',
       title: 'Some Track',
-      artist: ['Somebody'],
+      artists: ['Somebody'],
       album: ['Some Album'],
-      year: 1997,
-      genre: ['Rap', 'Trap'],
+      genres: ['Rap', 'Trap'],
       duration: 300,
-      cover:
+      image:
         'https://upload.wikimedia.org/wikipedia/en/4/41/17_XXXTENTACION_Cover.png',
     },
     {
-      id: 2,
+      id: '2',
       title: 'Some Other Track',
-      artist: ['Somebody Else'],
+      artists: ['Somebody Else'],
       album: ['Some Other Album'],
-      year: 1998,
-      genre: ['Rap', 'Trap'],
+      genres: ['Rap', 'Trap'],
       duration: 300,
-      cover:
+      image:
         'https://upload.wikimedia.org/wikipedia/en/2/21/%3F_XXXTENTACION_Cover.png',
     },
     {
-      id: 3,
+      id: '3',
       title: 'Some Other Track',
-      artist: ['Somebody Else'],
+      artists: ['Somebody Else'],
       album: ['Some Other Album'],
-      year: 1998,
-      genre: ['Rap', 'Trap'],
+      genres: ['Rap', 'Trap'],
       duration: 300,
-      cover:
+      image:
         'https://upload.wikimedia.org/wikipedia/ru/7/7e/Revenge_Single_Cover.jpg',
     },
     {
-      id: 4,
+      id: '4',
       title: 'Some Other Track',
-      artist: ['Somebody Else'],
+      artists: ['Somebody Else'],
       album: ['Some Other Album'],
-      year: 1998,
-      genre: ['Rap', 'Trap'],
+      genres: ['Rap', 'Trap'],
       duration: 300,
-      cover:
+      image:
         'https://upload.wikimedia.org/wikipedia/en/f/f7/XXXTentacion_%E2%80%93_Skins.png',
     },
     {
-      id: 5,
+      id: '5',
       title: 'Some Other Track',
-      artist: ['Somebody Else'],
+      artists: ['Somebody Else'],
       album: ['Some Other Album'],
-      year: 1998,
-      genre: ['Rap', 'Trap'],
+      genres: ['Rap', 'Trap'],
       duration: 300,
-      cover:
+      image:
         'https://upload.wikimedia.org/wikipedia/en/5/56/Bad_vibes_forever_xxxtentacion.jpg',
     },
   ],

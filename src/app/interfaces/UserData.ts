@@ -5,4 +5,5 @@ export interface UserData {
     Tracks: [],
     UserName: string,
     Description: string,
+    artistPageId: string,
 }

@@ -1,7 +1,6 @@
 import { getAccessSaaSToken } from '../server-utils/auth';
 import { getDirectusUserInfo, loginDirectusUser, regiserDirectusUser } from '../server-utils/directus';
-
-const restUrl = 'https://app-flso01saas05ctsp001.cms.optimizely.com/_cms/preview2/content?skipValidation=true';
+import { restUrl } from '../server-utils/saas';
 
 export async function POST(request: Request) {
     /** The data from UI: */

@@ -1,10 +1,10 @@
 export interface UserTrack {
-  id: number;
+  id?: string; // Artist Track page _id
   title: string;
-  artist: string[];
+  artists: string[];
   album: string[];
-  year: number;
-  genre: string[];
+  genres: string[];
   duration: number;
-  cover?: string;
+  image?: string;
+  url?: string;
 }

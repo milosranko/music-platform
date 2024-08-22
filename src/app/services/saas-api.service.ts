@@ -16,4 +16,13 @@ export class SaasApiService {
       return res.json();
     });
   }
+
+  createTrack(track: any): Promise<any> {
+    return fetch(`/api/track`, {
+      method: 'POST',
+      body: JSON.stringify(track)
+    }).then(res => {
+      return res.json();
+    });
+  }
 }

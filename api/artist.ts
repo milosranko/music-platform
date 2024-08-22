@@ -1,9 +1,4 @@
-import { Client, cacheExchange, fetchExchange } from '@urql/core';
-
-const client = new Client({
-    url: `https://cg.optimizely.com/content/v2?auth=${process.env?.OPTIMIZELY_CG_SINGLEKEY}`,
-    exchanges: [cacheExchange, fetchExchange],
-  });
+import { client } from '../server-utils/saas';
 
 export async function POST(request: Request) {
     const {
@@ -14,6 +9,7 @@ export async function POST(request: Request) {
         {
             ArtistPage(where: { UserId: { eq: "${userId}" } }, locale: [en]) {
                 items {
+                    _id,
                     Name
                     Email
                     Password

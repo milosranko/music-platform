@@ -1,16 +1,19 @@
 <section>
-  <div class="example-label">Basic</div>
   <div class="example-button-row">
-    <button mat-button (click)="openEditTrackForm()">Test Edit</button>
-    <button mat-button (click)="openCreateTrackForm()">Create</button>
+    <button mat-flat-button (click)="openCreateTrackForm()">Create</button>
   </div>
 </section>
 <mat-list>
     @for (track of tracksStore.tracks(); track track.id) {
         <mat-list-item>
           <mat-icon matListItemIcon>play_circle_outline</mat-icon>
-          <div matListItemTitle>{{track.title}} - {{track.artist}}</div>
-          <div matListItemLine>{{track.year}}, {{track.genre}}</div>
+          <div matListItemTitle>
+            {{track.title}} - {{track.artists}}
+            <button mat-icon-button (click)="openEditTrackForm(track)">
+              <mat-icon>edit</mat-icon>
+            </button>
+           </div>
+          <div matListItemLine>{{track.genres}}</div>
         </mat-list-item>
       }
 </mat-list>

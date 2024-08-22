@@ -4,12 +4,12 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import { ModalsService } from '../../../services/modals.service';
 import { UserTrack } from '../../../interfaces/UserTrack';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-user-tracks',
   standalone: true,
-  imports: [MatListModule, MatIconModule, MatButton],
+  imports: [MatListModule, MatIconModule, MatButtonModule],
   templateUrl: './user-tracks.component.html',
   styleUrl: './user-tracks.component.scss'
 })
@@ -18,16 +18,17 @@ export class UserTracksComponent {
   modalsService = inject(ModalsService);
 
   openCreateTrackForm = () => {
-    this.modalsService.openEditTrackModal();
+    this.modalsService.openEditTrackModal().subscribe((track) => {
+      this.tracksStore.addTrack(track);
+    });
   };
 
   openEditTrackForm = (track: UserTrack = { 
-    id: 2,
+    id: '2',
     title: 'title',
-    artist: ['artist'],
+    artists: ['artist'],
     album: ['album'],
-    year: 2021,
-    genre: ['genre'],
+    genres: ['genre'],
     duration: 100,
    }) => {
     this.modalsService.openEditTrackModal(track);

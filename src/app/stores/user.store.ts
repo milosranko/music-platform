@@ -27,6 +27,7 @@ export const mapUserData = (userData: any = {}): UserData => ({
   Tracks: [],
   UserName: userData.UserName,
   Description: '',
+  artistPageId: userData._id?.replace('_en_Published', '').replace(/-/gi, ''),
 });
 
 export const UserStore = signalStore(
@@ -47,7 +48,7 @@ export const UserStore = signalStore(
         const {userId} = await loginResponse.json();        
         localStorageService.storeAuthData(userId);
         const { userData } = await saasApiService.getArtistPageData(userId);
-
+        console.log(userData);
         patchState(store, { 
           userData: mapUserData(userData), 
           userId, isLoggedIn: true 
