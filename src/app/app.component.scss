@@ -5,16 +5,17 @@
 }
 
 h1 {
-    margin: 0;
+    margin: 0.5rem 0;
     font-size: 1rem;
+    line-height: 1.2rem;
+    text-align: center;
 }
 
 header {
     background-color: #333;
     color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 220px 1fr 220px;
     align-items: center;
 }
 
@@ -38,6 +39,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0.5rem 0;
 }
 
 .top-nav {
@@ -55,4 +57,12 @@ footer {
 
         list-style: none;
     }
+}
+
+.left-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.left-menu-item {
 }
