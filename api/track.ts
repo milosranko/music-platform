@@ -18,7 +18,7 @@ export async function POST(request: Request) {
           "Url": params.url,
           "Genres": params.genres,
           "Artists": params.artists,
-          "Image": params.image,
+          "Cover": params.image,
       }
     };
 

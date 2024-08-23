@@ -18,8 +18,8 @@
       <ul class="left-menu">
         <li class="left-menu-item"><a routerLink="/home" mat-button routerLinkActive="active">Home</a></li>
         <li class="left-menu-item"><a routerLink="/albums" mat-button routerLinkActive="active">Albums</a></li>
-        <li class="left-menu-item"><a routerLink="/tracks" mat-button routerLinkActive="active">Tracks</a></li>
         @if (userStore.isLoggedIn()) {
+          <li class="left-menu-item"><a routerLink="/tracks" mat-button routerLinkActive="active">Tracks</a></li>
           <li class="left-menu-item"><a routerLink="/profile" mat-button routerLinkActive="active">Profile</a></li>
         }
       </ul>

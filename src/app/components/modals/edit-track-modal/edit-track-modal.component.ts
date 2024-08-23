@@ -22,9 +22,8 @@ export class EditTrackModalComponent {
     id: new FormControl<string>(''),
     title: new FormControl<string>('', [Validators.required]),
     url: new FormControl<string>('', [Validators.required]),
-    image: new FormControl<string>(''),
+    cover: new FormControl<string>(''),
     artists: new FormArray<FormControl>([]),
-    album: new FormArray<FormControl>([]),
     genres: new FormArray<FormControl>([]),
   });
 
@@ -34,17 +33,13 @@ export class EditTrackModalComponent {
     } else {
       this.form.patchValue({
         title: this.track.title,
-        image: this.track.image,
+        cover: this.track.cover,
         url: this.track.url,
         id: this.track.id,
       });
 
       this.track.artists.forEach((artist) => {
         this.artistArray.push(new FormControl(artist));
-      });
-
-      this.track.album.forEach((album) => {
-        this.albumArray.push(new FormControl(album));
       });
 
       this.track.genres.forEach((genre) => {
@@ -69,10 +64,6 @@ export class EditTrackModalComponent {
     return this.form.get('artists') as FormArray;
   }
 
-  get albumArray() {
-    return this.form.get('album') as FormArray;
-  }
-
   get genreArray() {
     return this.form.get('genres') as FormArray;
   }
@@ -83,14 +74,6 @@ export class EditTrackModalComponent {
 
   addArtist = () => {
     this.artistArray.push(new FormControl(''));
-  }
-
-  deleteAlbum = (index: number) => {
-    this.albumArray.removeAt(index);
-  }
-
-  addAlbum = () => {
-    this.albumArray.push(new FormControl(''));
   }
 
   deleteGenre = (index: number) => {

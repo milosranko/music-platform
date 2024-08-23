@@ -15,8 +15,7 @@ const initialState: HomeTracksState = {
       artists: ['Somebody'],
       album: ['Some Album'],
       genres: ['Rap', 'Trap'],
-      duration: 300,
-      image:
+      cover:
         'https://upload.wikimedia.org/wikipedia/en/4/41/17_XXXTENTACION_Cover.png',
     },
     {
@@ -25,8 +24,7 @@ const initialState: HomeTracksState = {
       artists: ['Somebody Else'],
       album: ['Some Other Album'],
       genres: ['Rap', 'Trap'],
-      duration: 300,
-      image:
+      cover:
         'https://upload.wikimedia.org/wikipedia/en/2/21/%3F_XXXTENTACION_Cover.png',
     },
     {
@@ -35,8 +33,7 @@ const initialState: HomeTracksState = {
       artists: ['Somebody Else'],
       album: ['Some Other Album'],
       genres: ['Rap', 'Trap'],
-      duration: 300,
-      image:
+      cover:
         'https://upload.wikimedia.org/wikipedia/ru/7/7e/Revenge_Single_Cover.jpg',
     },
     {
@@ -45,8 +42,7 @@ const initialState: HomeTracksState = {
       artists: ['Somebody Else'],
       album: ['Some Other Album'],
       genres: ['Rap', 'Trap'],
-      duration: 300,
-      image:
+      cover:
         'https://upload.wikimedia.org/wikipedia/en/f/f7/XXXTentacion_%E2%80%93_Skins.png',
     },
     {
@@ -55,8 +51,7 @@ const initialState: HomeTracksState = {
       artists: ['Somebody Else'],
       album: ['Some Other Album'],
       genres: ['Rap', 'Trap'],
-      duration: 300,
-      image:
+      cover:
         'https://upload.wikimedia.org/wikipedia/en/5/56/Bad_vibes_forever_xxxtentacion.jpg',
     },
   ],

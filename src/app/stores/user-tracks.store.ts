@@ -10,36 +10,36 @@ export interface UserTracksState {
 };
 
 const initialState: UserTracksState = {
-    tracks: [
-      {
-        id: '1',
-        title: 'Some Track',
-        artists: ['Somebody'],
-        album: ['Some Album'],
-        genres: ['Jazz', 'Bibop', 'Fusion'],
-        duration: 300
-      },
-      {
-        id: '2',
-        title: 'Some Other Track',
-        artists: ['Somebody Else'],
-        album: ['Some Other Album'],
-        genres: ['Jazz', 'Bibop', 'Fusion'],
-        duration: 300
-      }
-    ], 
+    tracks: [], 
 };
+
+const mapTrack = (track: any): UserTrack => ({
+  id: track._id,
+  title: track.Name,
+  artists: track.Artists,
+  genres: track.Genres,
+  url: track.Url,
+  cover: track.Cover,
+});
 
 export const UserTracksStore = signalStore(
   { providedIn: 'root' },
   withState(initialState),
   withMethods((store, userStore = inject(UserStore), saasApiService = inject(SaasApiService)) => ({
-    /** TODO: api calls */
     async addTrack(track: UserTrack) {
       const {artistPageId} = userStore.userData();
       const id = uuidv4();
       const createResponse = await saasApiService.createTrack({...track, id, artistPageId});
       console.log(createResponse);
     },
+    async getTracks() {
+      const {artistPageId} = userStore.userData();
+      const {tracks} = await saasApiService.getTracks(artistPageId);
+      if (tracks?.length) {
+        patchState(store, {tracks: tracks.map(mapTrack)});
+      }
+
+      console.log(tracks);
+    }
   }))
 );

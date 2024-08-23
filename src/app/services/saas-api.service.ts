@@ -25,4 +25,13 @@ export class SaasApiService {
       return res.json();
     });
   }
+
+  getTracks(artistPageId: string): Promise<any> {
+    return fetch(`/api/user-tracks`, {
+      method: 'POST',
+      body: JSON.stringify({artistPageId})
+    }).then(res => {
+      return res.json();
+    });
+  }
 }
