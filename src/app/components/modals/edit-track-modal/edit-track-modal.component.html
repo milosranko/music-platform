@@ -1,7 +1,7 @@
 <h2 mat-dialog-title>{{track ? 'Edit track' : 'Create new track'}}</h2>
 <mat-dialog-content>
     <form [formGroup]="form">
-        <h5 class="array-fields-title">
+        <h5 class="array-fields-title header">
             General
         </h5>
         <div class="first-row-fields">
@@ -13,12 +13,24 @@
                 <mat-label>Url</mat-label>
                 <input matInput placeholder="Url" formControlName="url">
             </mat-form-field>
-            <mat-form-field>
-                <mat-label>Cover</mat-label>
-                <input matInput placeholder="Cover" formControlName="cover">
-            </mat-form-field>
         </div>
-        <h5 class="array-fields-title">
+        <h5 class="array-fields-title header">
+            Artists
+        </h5>
+        <div class="field-with-ai">
+            <div class="cover-preview">
+                @if (coverValue) {
+                    <img src="{{coverValue}}" alt="Cover" class="">
+                } @else {
+                    <div class="cover-placeholder">Cover</div>
+                }
+            </div>
+            <button mat-fab (click)="generateCover()" [disabled]="generateDisabled" matTooltip="Generate track cover. Title and at least one genre are required.">
+                <mat-icon>smart_toy</mat-icon>
+            </button>
+        </div>
+
+        <!-- <h5 class="array-fields-title">
             Artists
         </h5>
         <div class="array-fields" formArrayName="artists">
@@ -35,8 +47,8 @@
             <button mat-fab aria-label="Add" (click)="addArtist()">
                 <mat-icon>add</mat-icon>
             </button>
-        </div>
-        <h5 class="array-fields-title">
+        </div> -->
+        <h5 class="array-fields-title header">
             Genres
         </h5>
         <div class="array-fields" formArrayName="genres">
@@ -52,6 +64,15 @@
             }
             <button mat-fab aria-label="Add" (click)="addGenre()">
                 <mat-icon>add</mat-icon>
+            </button>
+        </div>
+        <div class="field-with-ai">
+            <mat-form-field>
+                <mat-label>Promo</mat-label>
+                <textarea matInput placeholder="Promo" formControlName="promo"></textarea>
+            </mat-form-field>
+            <button mat-fab (click)="generatePromo()" [disabled]="generateDisabled" matTooltip="Generate Promo. Title and at least one genre are required.">
+                <mat-icon>smart_toy</mat-icon>
             </button>
         </div>
     </form>

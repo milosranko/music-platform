@@ -29,7 +29,6 @@ export async function POST(request: Request) {
       });
 
     var messageResult = imageResults.data[0].url
-
     if(!messageResult?.length) {
         return new Response(JSON.stringify({ error: 'Unexpected error occurred' }), { 
             headers: { 'content-type': 'application/json' },
@@ -37,7 +36,24 @@ export async function POST(request: Request) {
         });
     }
 
-    return new Response(messageResult);
+    const storage: {url: string} = await fetch(`${process.env?.FILE_STORAGE_URL}/store`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            url: messageResult
+        }),
+    }).then(res => res.json()) as {url: string};
+
+    if (!storage?.url) {
+        return new Response(JSON.stringify({ error: 'Image not stored' }), { 
+            headers: { 'content-type': 'application/json' },
+            status: 500
+        });
+    }
+
+    return new Response(JSON.stringify(storage), { headers: { 'content-type': 'application/json' } });
 }
 
 interface TrackCover {

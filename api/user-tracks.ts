@@ -36,6 +36,7 @@ export async function POST(request: Request) {
                     Genres,
                     Url,
                     Cover,
+                    Promo,
                     Artists,
                     _metadata {
                         ... on InstanceMetadata {

@@ -3,11 +3,12 @@ import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { SiteSettingsStore } from './stores/site-settings.store';
 import { MatButtonModule } from '@angular/material/button';
 import { UserStore } from './stores/user.store';
+import { LoadingContainerComponent } from "./components/layout/loading-container/loading-container.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterModule, MatButtonModule],
+  imports: [RouterOutlet, RouterModule, MatButtonModule, LoadingContainerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

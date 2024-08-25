@@ -5,11 +5,12 @@ import {MatListModule} from '@angular/material/list';
 import { ModalsService } from '../../../services/modals.service';
 import { UserTrack } from '../../../interfaces/UserTrack';
 import { MatButton, MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-user-tracks',
   standalone: true,
-  imports: [MatListModule, MatIconModule, MatButtonModule],
+  imports: [MatListModule, MatIconModule, MatButtonModule, MatCardModule],
   templateUrl: './user-tracks.component.html',
   styleUrl: './user-tracks.component.scss'
 })
@@ -23,7 +24,9 @@ export class UserTracksComponent implements OnInit {
 
   openCreateTrackForm = () => {
     this.modalsService.openEditTrackModal().subscribe((track) => {
-      this.tracksStore.addTrack(track);
+      this.tracksStore.addTrack(track).then(() => {
+        this.tracksStore.getTracks();
+      });
     });
   };
 

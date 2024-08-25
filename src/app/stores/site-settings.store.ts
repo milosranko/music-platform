@@ -33,5 +33,8 @@ export const SiteSettingsStore = signalStore(
         isLoading: false 
       });
     },
+    async setLoading(isLoading: boolean): Promise<void> {
+      patchState(store, { isLoading });
+    }
   }))
 );

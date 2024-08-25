@@ -9,7 +9,7 @@ import { SignUpComponent } from './components/sections/sign-up/sign-up.component
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'albums', component: UserAlbumsComponent },
+  // { path: 'albums', component: UserAlbumsComponent },
   { path: 'tracks', component: UserTracksComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'login', component: LoginComponent },

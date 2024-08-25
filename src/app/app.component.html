@@ -1,34 +1,38 @@
-<header>
-  <div></div>
-  <h1>{{siteSettingsStore.heading()}}</h1>
-  <nav class="top-nav">
-    <ul>
-      @if (userStore.isLoggedIn()) {
-        <li><button mat-raised-button (click)="logout()">Logout</button></li>
-      } @else {
-        <li><a mat-raised-button routerLink="/login" routerLinkActive="active">Login</a></li>
-        <li><a mat-raised-button routerLink="/sign-up" routerLinkActive="active">Sign in</a></li>
-      }
-    </ul>
-  </nav>
-</header>
-<main>
-  <aside>
-    <nav>
-      <ul class="left-menu">
-        <li class="left-menu-item"><a routerLink="/home" mat-button routerLinkActive="active">Home</a></li>
-        <li class="left-menu-item"><a routerLink="/albums" mat-button routerLinkActive="active">Albums</a></li>
-        @if (userStore.isLoggedIn()) {
-          <li class="left-menu-item"><a routerLink="/tracks" mat-button routerLinkActive="active">Tracks</a></li>
-          <li class="left-menu-item"><a routerLink="/profile" mat-button routerLinkActive="active">Profile</a></li>
-        }
-      </ul>
-    </nav>
-  </aside>
-  <section>
-    <router-outlet></router-outlet>
-  </section>
-</main>
-<footer>
-  <p [innerHTML]="siteSettingsStore.footerHtmlSafe()"></p>
-</footer>
+<app-loading-container>
+  <div class="main-container">
+    <header>
+      <div></div>
+      <h1>{{siteSettingsStore.heading()}}</h1>
+      <nav class="top-nav">
+        <ul>
+          @if (userStore.isLoggedIn()) {
+            <li><button mat-raised-button (click)="logout()">Logout</button></li>
+          } @else {
+            <li><a mat-raised-button routerLink="/login" routerLinkActive="active">Login</a></li>
+            <li><a mat-raised-button routerLink="/sign-up" routerLinkActive="active">Sign in</a></li>
+          }
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <aside>
+        <nav>
+          <ul class="left-menu">
+            <li class="left-menu-item"><a routerLink="/home" mat-button routerLinkActive="active">Home</a></li>
+            <!-- <li class="left-menu-item"><a routerLink="/albums" mat-button routerLinkActive="active">Albums</a></li> -->
+            @if (userStore.isLoggedIn()) {
+              <li class="left-menu-item"><a routerLink="/tracks" mat-button routerLinkActive="active">My Tracks</a></li>
+              <li class="left-menu-item"><a routerLink="/profile" mat-button routerLinkActive="active">Profile</a></li>
+            }
+          </ul>
+        </nav>
+      </aside>
+      <section>
+        <router-outlet></router-outlet>
+      </section>
+    </main>
+    <footer>
+      <p [innerHTML]="siteSettingsStore.footerHtmlSafe()"></p>
+    </footer>
+  </div>
+</app-loading-container>

@@ -3,17 +3,14 @@
     <button mat-flat-button (click)="openCreateTrackForm()">Create</button>
   </div>
 </section>
-<mat-list>
+<div class="list">
     @for (track of tracksStore.tracks(); track track.id) {
-        <mat-list-item>
-          <mat-icon matListItemIcon>play_circle_outline</mat-icon>
-          <div matListItemTitle>
-            {{track.title}} - {{track.artists}}
-            <button mat-icon-button (click)="openEditTrackForm(track)">
-              <mat-icon>edit</mat-icon>
-            </button>
-           </div>
-          <div matListItemLine>{{track.genres}}</div>
-        </mat-list-item>
+        <mat-card class="example-card" appearance="outlined">
+          <mat-card-header>
+            <mat-card-title>{{ track.title }} - {{ track.artists }}</mat-card-title>
+            <mat-card-subtitle>{{ track.genres }}</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src="{{ track.cover }}" />
+        </mat-card>
       }
-</mat-list>
+</div>
