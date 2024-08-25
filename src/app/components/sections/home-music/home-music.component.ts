@@ -1,16 +1,16 @@
 import { Component, inject } from '@angular/core';
-import { HomeTracksStore } from '../../../stores/home-content.store';
+import { HomeTracksStore } from '../../../stores/home-tracks.store';
 import { MatCardModule } from '@angular/material/card';
 import { OpenAiService } from '../../../services/open-ai.service';
 import { UserStore } from '../../../stores/user.store';
 import { UserTracksStore } from '../../../stores/user-tracks.store';
-import { catchError } from 'rxjs';
 import { SiteSettingsStore } from '../../../stores/site-settings.store';
+import { TrackTileComponent } from '../../shared/track-tile/track-tile.component';
 
 @Component({
   selector: 'app-home-music',
   standalone: true,
-  imports: [MatCardModule],
+  imports: [TrackTileComponent],
   templateUrl: './home-music.component.html',
   styleUrl: './home-music.component.scss',
 })
@@ -26,15 +26,6 @@ export class HomeMusicComponent {
   ) {}
 
   ngOnInit(): void {
-    this.homeTracksStore.loadStartPage();
+    this.homeTracksStore.getTracks();
   }
-
-  generateTrackCover = () => {
-    this.openAiService.generateTrackCover(
-      this.userStore.userData(),
-      this.userTracksStore.tracks()[0]
-    ).subscribe((cover) => {
-      console.log(cover);
-    });
-  };
 }

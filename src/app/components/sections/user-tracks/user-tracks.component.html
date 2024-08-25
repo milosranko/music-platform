@@ -1,16 +1,10 @@
-<section>
-  <div class="example-button-row">
+<header>
+  <div class="">
     <button mat-flat-button (click)="openCreateTrackForm()">Create</button>
   </div>
-</section>
+</header>
 <div class="list">
     @for (track of tracksStore.tracks(); track track.id) {
-        <mat-card class="example-card" appearance="outlined">
-          <mat-card-header>
-            <mat-card-title>{{ track.title }} - {{ track.artists }}</mat-card-title>
-            <mat-card-subtitle>{{ track.genres }}</mat-card-subtitle>
-          </mat-card-header>
-          <img mat-card-image src="{{ track.cover }}" />
-        </mat-card>
-      }
+      <app-track-tile [track]="track" [canEdit]="true" (onEdit)="openEditTrackForm(track)"></app-track-tile>
+    }
 </div>

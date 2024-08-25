@@ -57,6 +57,7 @@ const initialState: HomeTracksState = {
   ],
 };
 
+/** @obsolete */
 export const HomeTracksStore = signalStore(
   { providedIn: 'root' },
   withState(initialState),

@@ -34,4 +34,12 @@ export class SaasApiService {
       return res.json();
     });
   }
+
+  getAllTracks(): Promise<any> {
+    return fetch(`/api/all-tracks`, {
+      method: 'GET',
+    }).then(res => {
+      return res.json();
+    });
+  }
 }

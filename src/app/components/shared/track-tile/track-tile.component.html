@@ -1,0 +1,17 @@
+<mat-card class="example-card" appearance="outlined">
+    <mat-card-header>
+        <mat-card-title>{{ track().title }} - {{ track().artists }}</mat-card-title>
+        <mat-card-subtitle>{{ track().genres }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{ track().cover }}" />
+    <mat-card-content>
+        <p>
+            {{ track().promo }}
+        </p>
+      </mat-card-content>
+      @if (canEdit()) {
+          <mat-card-actions>
+            <button mat-button (click)="edit()">Edit</button>
+          </mat-card-actions>
+      }
+</mat-card>

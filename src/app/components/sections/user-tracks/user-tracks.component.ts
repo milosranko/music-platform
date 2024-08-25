@@ -6,11 +6,12 @@ import { ModalsService } from '../../../services/modals.service';
 import { UserTrack } from '../../../interfaces/UserTrack';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { TrackTileComponent } from '../../shared/track-tile/track-tile.component';
 
 @Component({
   selector: 'app-user-tracks',
   standalone: true,
-  imports: [MatListModule, MatIconModule, MatButtonModule, MatCardModule],
+  imports: [MatListModule, MatIconModule, MatButtonModule, TrackTileComponent],
   templateUrl: './user-tracks.component.html',
   styleUrl: './user-tracks.component.scss'
 })
@@ -30,13 +31,9 @@ export class UserTracksComponent implements OnInit {
     });
   };
 
-  openEditTrackForm = (track: UserTrack = { 
-    id: '2',
-    title: 'title',
-    artists: ['artist'],
-    album: ['album'],
-    genres: ['genre'],
-   }) => {
-    this.modalsService.openEditTrackModal(track);
+  openEditTrackForm = (track: UserTrack) => {
+    if (track) {
+      this.modalsService.openEditTrackModal(track);
+    }
   };
 }
